@@ -1,20 +1,20 @@
 [
   {
     "type": "release",
-    "versionCode": 1283,
-    "versionName": "1.2.8.3",
-    "date": "2026.02.01",
+    "versionCode": 1286,
+    "versionName": "1.2.8.6",
+    "date": "2026.02.16",
     "description": [
       {
         "lang": "en",
-        "text": "(Translated from Chinese by AI)\n1. Fix the issue where some devices cannot access external storage folder paths, causing the launcher to crash.\n2. Add the functionality for the download interface search box to support \"Enter\" key search in the input method.\n3. Optimize the JVM crash log reading logic to prevent the launcher from freezing when log files are excessively large.\n4. Add log output detection to prevent the launcher from freezing when a large volume of logs is generated rapidly.\n5. Implement automatic modification of the touchscreen function to prevent touchscreen unresponsiveness caused by accidental touch activation."
+        "text": "(Translated from Chinese by AI)\n1. Update Terracotta to 0.4.2, fixing the issue where multiplayer was not working.  \n2. Fix the issue where the launcher unexpectedly crashed after exporting the world.  \n3. Update ANGLE.  \n4. Update the KW renderer.  \n5. Optimize the launcher's FPS display update mechanism to resolve abnormal CPU usage."
       },
       {
         "lang": "zh_CN",
-        "text": "（若启动器内下载缓慢请使用网盘下载,64位的请下载arm64，不知道该下哪个的请下载all）\n1.修复部分设备无法获取外部文件夹目录导致启动器崩溃的问题\n2.添加下载界面搜索框输入法回车搜索的功能\n3.优化jvm崩溃日志读取逻辑，防止日志文件过大造成启动器卡死的问题\n4.增加日志输出检测，防止大量日志快速输出时造成启动器卡死的问题\n5.增加自动修改touchscreen功能防止误触开启导致的触控失灵问题"
+        "text": "（若启动器内下载缓慢请使用网盘下载,64位的请下载arm64，不知道该下哪个的请下载all）\n1.更新Terracotta至0.4.2，修复无法联机的问题\n2.修复导出世界完成后启动器意外崩溃的问题\n3.更新ANGLE\n4.更新KW渲染器\n5.优化启动器的FPS显示更新机制，修复CPU异常占用"
       }
     ],
-    "netdiskUrl": "https://pan.quark.cn/s/76b861361fa9",
-    "url": "https://github.com/FCL-Team/FoldCraftLauncher/releases/download/1.2.8.3/FCL-release-1.2.8.3-all.apk"
+    "netdiskUrl": "https://pan.quark.cn/s/480e818fcd66",
+    "url": "https://github.com/FCL-Team/FoldCraftLauncher/releases/download/1.2.8.6/FCL-release-1.2.8.6-all.apk"
   }
 ]

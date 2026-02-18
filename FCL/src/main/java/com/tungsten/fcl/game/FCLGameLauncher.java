@@ -100,7 +100,9 @@ public final class FCLGameLauncher extends DefaultLauncher {
         boolean toUpper = gameVersion.compareTo("1.11") < 0;
         String lang;
         lang = gameOption.get("lang");
+        if (lang == null) return;
         String[] parts = lang.split("_", 2);
+        if (parts.length != 2) return;
         lang = parts[0] + "_" + (toUpper ? parts[1].toUpperCase() : parts[1].toLowerCase());
         gameOption.set("lang", lang);
     }
@@ -130,7 +132,7 @@ public final class FCLGameLauncher extends DefaultLauncher {
                         str.append(line).append("\n");
                     }
                 }
-                if (!overwrite && !str.toString().contains(replacement)) {
+                if (!overwrite && !str.toString().contains(replacement.replace("false", "").replace("true", ""))) {
                     str.append(replacement);
                 }
             } catch (Exception e) {
@@ -164,7 +166,7 @@ public final class FCLGameLauncher extends DefaultLauncher {
     public FCLBridge launch() throws IOException, InterruptedException {
         generateOptionsTxt();
         // Sodium
-        modifyIfConfigDetected("sodium-mixins.properties", "", "mixin.features.chunk_rendering=false", false, RendererManager.RENDERER_GL4ES, RendererManager.RENDERER_VGPU, RendererManager.RENDERER_NGGL4ES);
+        modifyIfConfigDetected("sodium-mixins.properties", "", "mixin.features.chunk_rendering=false", false, RendererManager.RENDERER_GL4ES, RendererManager.RENDERER_VGPU);
         // Rubidium
         modifyIfConfigDetected("rubidium-mixins.properties", "", "mixin.features.chunk_rendering=false", false, RendererManager.RENDERER_GL4ES, RendererManager.RENDERER_VGPU);
         // DraconicEvolution
@@ -178,9 +180,6 @@ public final class FCLGameLauncher extends DefaultLauncher {
         modifyIfConfigDetected("pixelmon/config.yml", "use-discord-rich-presence:", "use-discord-rich-presence: false", true);
         // ImmersiveEngineering
         modifyIfConfigDetected("immersiveengineering-client.toml", "stencilBufferEnabled", "stencilBufferEnabled = false", true, RendererManager.RENDERER_GL4ES, RendererManager.RENDERER_VGPU, RendererManager.RENDERER_NGGL4ES);
-        // Create
-        modifyIfConfigDetected("flywheel-client.toml", "enabled", "enabled = false", true, RendererManager.RENDERER_GL4ES, RendererManager.RENDERER_NGGL4ES);
-        modifyIfConfigDetected("flywheel-client.toml", "backend =", "backend = \"OFF\"", true, RendererManager.RENDERER_GL4ES, RendererManager.RENDERER_NGGL4ES);
         return super.launch();
     }
 }
