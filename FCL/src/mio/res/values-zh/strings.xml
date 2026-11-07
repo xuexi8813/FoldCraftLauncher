@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] fcl-澪 中文标签 -->
+<resources>
+    <string name="mio_menu_home">主页</string>
+    <string name="mio_section_launcher">启动器</string>
+    <string name="mio_section_game">游戏</string>
+</resources>

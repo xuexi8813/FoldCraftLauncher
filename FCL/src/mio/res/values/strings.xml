@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] fcl-澪 应用身份覆盖：默认语言 -->
+<resources>
+    <string name="app_name" translatable="false">FCL-澪</string>
+    <!-- 侧栏"主页"标签（main 源集无对应字符串） -->
+    <string name="mio_menu_home">Home</string>
+    <!-- 侧栏小节标题 -->
+    <string name="mio_section_launcher">Launcher</string>
+    <string name="mio_section_game">Game</string>
+</resources>

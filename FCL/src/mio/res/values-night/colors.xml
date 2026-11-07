@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] 暗色模式：半透明深色面板浮在暗色背景上（澪语言的高亮模式适配） -->
+<resources>
+    <color name="ui_bg_color">#8B26262A</color>
+    <color name="right_menu_color">#8B26262A</color>
+    <color name="primary_text">#FFFFFFFF</color>
+    <color name="dialog_background">#232323</color>
+    <color name="mio_panel">#8B26262A</color>
+</resources>

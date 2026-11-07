@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] 澪左侧栏容器：半透明白 + 1px 灰褐描边，直角（复刻 background_layout_fictionlist） -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/mio_panel" />
+    <stroke
+        android:width="1px"
+        android:color="@color/mio_sidebar_stroke" />
+</shape>

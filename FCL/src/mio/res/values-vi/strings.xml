@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] fcl-澪 应用身份覆盖：越南语（main 源集在 values-vi 重声明了 app_name） -->
+<resources>
+    <string name="app_name" translatable="false">FCL-澪</string>
+</resources>

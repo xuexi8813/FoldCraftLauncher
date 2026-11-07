@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] 澪内容面板：半透明白 8dp 圆角，浮在场景背景上 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="8dp" />
+    <solid android:color="@color/mio_panel" />
+</shape>

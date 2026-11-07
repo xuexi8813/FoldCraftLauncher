@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] 澪启动器配色复刻（默认粉主题，见 _mio_analysis/design_spec.md）。
+     仅覆盖颜色资源，FCL 的动态主题系统（ThemeEngine）不受影响：
+     用户仍可在设置里改主题色，此处只决定"默认值"与"恢复默认"的落点。 -->
+<resources>
+    <!-- 澪 colorPrimary / colorPrimaryDark -->
+    <color name="default_theme_color">#F97297</color>
+    <color name="default_theme_color_dark">#FF5180</color>
+
+    <!-- 澪半透明面板语言：内容浮在背景上 -->
+    <color name="ui_bg_color">#8BFFFFFF</color>
+    <color name="right_menu_color">#8BFFFFFF</color>
+
+    <!-- 澪正文为暖灰而非纯黑 -->
+    <color name="primary_text">#FF4A4745</color>
+
+    <!-- 澪对话框为纯白 -->
+    <color name="dialog_background">#FFFFFF</color>
+
+    <!-- fcl-澪 专属 -->
+    <color name="mio_sidebar_stroke">#DD716F6D</color>
+    <color name="mio_panel">#8BFFFFFF</color>
+    <color name="mio_icon_background">#F97297</color>
+</resources>
