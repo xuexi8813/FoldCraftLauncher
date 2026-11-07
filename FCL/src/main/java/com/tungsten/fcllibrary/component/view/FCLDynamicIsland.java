@@ -134,7 +134,10 @@ public class FCLDynamicIsland extends AppCompatTextView {
     public void setTextWithAnim(String text) {
         post(() -> {
             float scale = (float) getMeasuredHeight() / (float) getMeasuredWidth();
-            if (Float.isNaN(scale)){
+            if (!Float.isFinite(scale) || scale <= 0f){
+                // 视图尚未完成首次布局（宽或高为 0 → NaN/Infinity）时无法计算动画比例，
+                // 直接静态显示文本，避免首次标题丢失（如冷启动进入主页时）
+                refresh(text);
                 return;
             }
             anim.refresh(scale);
