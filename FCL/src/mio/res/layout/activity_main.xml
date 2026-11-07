@@ -68,15 +68,93 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_bar">
 
-        <com.tungsten.fcllibrary.component.view.FCLTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="2dp"
-            android:text="@string/mio_section_launcher"
-            android:textSize="10sp"
-            app:auto_text_tint="true" />
+        <!-- 侧栏内容可滚动（对齐澪的 activity_mainScrollView） -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.tungsten.fcllibrary.component.view.FCLTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/mio_section_account"
+                    android:textSize="10sp"
+                    app:auto_text_tint="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#44716F6D" />
+
+                <!-- 账户条目（澪侧栏首组"用户"位）：点击进入账户管理页 -->
+                <LinearLayout
+                    android:id="@+id/account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <com.tungsten.fcllibrary.component.view.FCLImageView
+                        android:id="@+id/avatar"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:focusable="true"
+                        android:stateListAnimator="@xml/anim_scale_large" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.tungsten.fcllibrary.component.view.FCLTextView
+                            android:id="@+id/account_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/account_state_no_account"
+                            android:textColor="@color/primary_text"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <com.tungsten.fcllibrary.component.view.FCLTextView
+                            android:id="@+id/account_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/account_state_add"
+                            android:textColor="@color/primary_text"
+                            android:textSize="9sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.tungsten.fcllibrary.component.view.FCLTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:paddingStart="10dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/mio_section_launcher"
+                    android:textSize="10sp"
+                    app:auto_text_tint="true" />
 
         <View
             android:layout_width="match_parent"
@@ -167,10 +245,9 @@
             app:mioLabel="@string/setting"
             app:mioPixelIcon="true" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            </LinearLayout>
+
+        </ScrollView>
 
         <com.tungsten.fcl.library.component.view.MioMenuView
             android:id="@+id/back"
@@ -227,57 +304,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/account"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="3dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/download_wave_progress">
-
-                <com.tungsten.fcllibrary.component.view.FCLImageView
-                    android:id="@+id/avatar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:focusable="true"
-                    android:stateListAnimator="@xml/anim_scale_large" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <com.tungsten.fcllibrary.component.view.FCLTextView
-                        android:id="@+id/account_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/account_state_no_account"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <com.tungsten.fcllibrary.component.view.FCLTextView
-                        android:id="@+id/account_hint"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/account_state_add"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
             <!-- 版本卡片：图标 + 版本名 + 组件摘要，点击进入版本选择，齿轮进入版本设置 -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/version_card"
@@ -293,7 +319,7 @@
                 android:stateListAnimator="@xml/anim_scale"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/account">
+                app:layout_constraintTop_toBottomOf="@id/download_wave_progress">
 
                 <com.tungsten.fcllibrary.component.view.FCLImageView
                     android:id="@+id/icon"

@@ -5,6 +5,7 @@
     <!-- 侧栏"主页"标签（main 源集无对应字符串） -->
     <string name="mio_menu_home">Home</string>
     <!-- 侧栏小节标题 -->
+    <string name="mio_section_account">Account</string>
     <string name="mio_section_launcher">Launcher</string>
     <string name="mio_section_game">Game</string>
 </resources>

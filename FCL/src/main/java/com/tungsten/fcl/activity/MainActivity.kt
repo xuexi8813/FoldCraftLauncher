@@ -17,6 +17,7 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
+import android.view.ViewGroup
 import android.view.animation.BounceInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
@@ -765,11 +766,19 @@ class MainActivity : FCLActivity(), OnSelectListener, View.OnClickListener {
     }
 
     fun refreshMenuView(view: FCLMenuView?) {
-        binding.leftMenu.forEach {
-            if (it is FCLMenuView && it != view) {
-                it.isSelected = false
+        // 深度优先遍历 left_menu 子树内的所有菜单项（mio 布局的菜单项嵌套在
+        // ScrollView 内，不再是其直接子视图；standard 布局为直接子视图，结果等价）
+        fun walk(target: View) {
+            if (target is FCLMenuView && target != view) {
+                target.isSelected = false
+            }
+            if (target is ViewGroup) {
+                for (i in 0 until target.childCount) {
+                    walk(target.getChildAt(i))
+                }
             }
         }
+        walk(binding.leftMenu)
     }
 
     override fun onClick(view: View) {
