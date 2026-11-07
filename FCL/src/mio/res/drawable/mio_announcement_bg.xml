@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] 澪公告面板：浅粉底 + 1dp 粉描边 + 10dp 圆角（复刻澪 background_info） -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/mio_announcement_bg" />
+    <corners android:radius="10dp" />
+    <stroke
+        android:width="1dp"
+        android:color="@color/mio_announcement_stroke" />
+</shape>

@@ -17,25 +17,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- 顶栏：澪的顶部工具栏位置，动态岛标题居中 -->
-    <LinearLayout
+    <!-- 顶栏：澪式主题色实心工具条，动态岛标题居中 -->
+    <FrameLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:background="@color/mio_panel"
         android:elevation="60dp"
-        android:gravity="center"
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.tungsten.fcl.library.component.view.MioThemeBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <com.tungsten.fcllibrary.component.view.FCLDynamicIsland
             android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
-    </LinearLayout>
+    </FrameLayout>
 
     <!-- 左侧澪式分类侧栏：小节标题 + 分隔线 + MC 像素图标条目 -->
     <LinearLayout
@@ -178,14 +180,14 @@
         app:layout_constraintStart_toEndOf="@id/left_menu"
         app:layout_constraintTop_toBottomOf="@id/top_bar" />
 
-    <!-- 右下角澪式启动块：账户行 + 版本卡 + 启动按钮（下载面板同域滑入） -->
+    <!-- 右下角澪式启动块：主题色实心（账户行 + 版本卡 + 启动按钮，下载面板同域滑入） -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/right_menu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/bg_container_white"
+        android:background="@android:color/transparent"
         android:elevation="100dp"
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -194,20 +196,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.28">
 
-        <LinearLayout
+        <com.tungsten.fcl.library.component.view.MioThemeCard
             android:id="@+id/right_menu_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:orientation="vertical">
+            android:padding="8dp">
 
             <com.mio.ui.view.WaveProgressView
                 android:id="@+id/download_wave_progress"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginHorizontal="4dp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/account"
@@ -218,7 +223,10 @@
                 android:focusable="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="4dp">
+                android:padding="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/download_wave_progress">
 
                 <com.tungsten.fcllibrary.component.view.FCLImageView
                     android:id="@+id/avatar"
@@ -240,9 +248,9 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="@string/account_state_no_account"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:use_theme_color="true" />
+                        android:textStyle="bold" />
 
                     <com.tungsten.fcllibrary.component.view.FCLTextView
                         android:id="@+id/account_hint"
@@ -250,8 +258,8 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="@string/account_state_add"
-                        android:textSize="10sp"
-                        app:use_theme_color="true" />
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
 
                 </LinearLayout>
 
@@ -269,7 +277,10 @@
                 android:paddingTop="5dp"
                 android:paddingEnd="4dp"
                 android:paddingBottom="5dp"
-                android:stateListAnimator="@xml/anim_scale">
+                android:stateListAnimator="@xml/anim_scale"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account">
 
                 <com.tungsten.fcllibrary.component.view.FCLImageView
                     android:id="@+id/icon"
@@ -287,12 +298,12 @@
                     android:ellipsize="marquee"
                     android:marqueeRepeatLimit="marquee_forever"
                     android:singleLine="true"
+                    android:textColor="@color/white"
                     android:textSize="13sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/go_setting"
                     app:layout_constraintStart_toEndOf="@id/icon"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:use_theme_color="true"
                     tools:text="1.21.1-Forge" />
 
                 <com.tungsten.fcllibrary.component.view.FCLTextView
@@ -302,13 +313,13 @@
                     android:layout_marginStart="8dp"
                     android:ellipsize="end"
                     android:singleLine="true"
+                    android:textColor="@color/white"
                     android:textSize="10sp"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/go_setting"
                     app:layout_constraintStart_toEndOf="@id/icon"
                     app:layout_constraintTop_toBottomOf="@id/version_name"
-                    app:use_theme_color="true"
                     tools:text="1.21.1, Forge:47.2.0" />
 
                 <com.tungsten.fcllibrary.component.view.FCLImageButton
@@ -316,11 +327,11 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_baseline_settings_24"
+                    android:tint="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:no_padding="true"
-                    app:use_theme_color="true" />
+                    app:no_padding="true" />
 
                 <com.tungsten.fcllibrary.component.view.FCLProgressBar
                     android:id="@+id/version_progress"
@@ -344,7 +355,11 @@
                 android:elevation="10dp"
                 android:focusable="true"
                 android:paddingVertical="10dp"
-                android:stateListAnimator="@xml/anim_scale">
+                android:stateListAnimator="@xml/anim_scale"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/version_card">
 
                 <com.tungsten.fcllibrary.component.view.FCLImageView
                     android:id="@+id/icon_start"
@@ -375,7 +390,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
+        </com.tungsten.fcl.library.component.view.MioThemeCard>
 
         <com.mio.ui.view.DownloadSlidePanel
             android:id="@+id/download_panel"

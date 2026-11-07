@@ -46,6 +46,14 @@ public class FCLDynamicIsland extends AppCompatTextView {
             textPaint.setTextSize(ConvertUtils.dip2px(getContext(), 13));
             textPaint.setColor(ThemeEngine.getInstance().getTheme().getAutoTint());
             textPaint.setTextAlign(Paint.Align.CENTER);
+            // [mio] 澪风格：顶栏已是实心主题色条，动态岛隐藏药丸底、标题用白色粗体（澪工具栏标题样式）
+            if (com.tungsten.fcl.BuildConfig.FLAVOR.equals("mio")) {
+                insidePaint.setColor(android.graphics.Color.TRANSPARENT);
+                outlinePaint.setColor(android.graphics.Color.TRANSPARENT);
+                textPaint.setColor(android.graphics.Color.WHITE);
+                textPaint.setFakeBoldText(true);
+                textPaint.setTextSize(ConvertUtils.dip2px(getContext(), 15));
+            }
             invalidate();
             setTextColor(ThemeEngine.getInstance().getTheme().getAutoTint());
     }

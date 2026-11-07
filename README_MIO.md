@@ -67,6 +67,7 @@ git merge upstream/main
 1. **共享代码中的 `[mio]` 挂钩**（全局仅以下几处，冲突时保留两侧逻辑）：
    - `FCL/build.gradle.kts` — flavor 定义、`file_browser_provider` 动态化、APK 命名
    - `FCL/src/main/java/com/tungsten/fcl/activity/MainActivity.kt` — 2 处 `// [mio]` 分支（侧栏底色、启动按钮底色）
+   - `FCL/src/main/java/com/tungsten/fcllibrary/component/view/FCLDynamicIsland.java` — 1 处 `// [mio]` 分支（澪顶栏下动态岛隐藏药丸、白色粗体标题）
    - `README.md` — 头部跳转链接
 2. **上游布局变更的移植**：上游若修改了 `activity_main.xml` / `ui_*.xml`（新增视图 ID 等），需把对应变更手动移植到 `src/mio/res/layout/` 的同名覆盖文件（否则 mio 变体仍是旧结构）。
 
@@ -77,5 +78,5 @@ git merge upstream/main
 ## 📜 版权说明
 
 - 本项目遵循 FCL 原项目的 **GPL-3.0** 协议。
-- "澪-Ultimate" 为 ShirosakiMio 的作品，本分支仅复刻其界面风格（布局结构/配色/交互语言），未包含其专属美术资产（吉祥物、公告内容等）；内置背景图为 Minecraft 场景截图、侧栏像素图标为 Minecraft 游戏素材。
+- "澪-Ultimate" 为 ShirosakiMio 的作品，本分支复刻其界面风格（布局结构/配色/交互语言）；应用启动图标为从澪 APK 中提取的角色立绘（应用所有者要求），仅供个人复刻研究使用，澪相关美术的权利归其作者所有；内置背景图为 Minecraft 场景截图、侧栏像素图标为 Minecraft 游戏素材。
 - 本分支为个人学习复刻用途，澪相关商标与权利归其作者所有。
