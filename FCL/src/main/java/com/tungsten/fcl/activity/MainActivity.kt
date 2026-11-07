@@ -55,6 +55,7 @@ import com.mio.util.ImageUtil
 import com.mio.util.getLocalizedText
 import com.mio.util.hasStringId
 import com.mio.util.pixelAwareIcon
+import com.tungsten.fcl.BuildConfig
 import com.tungsten.fcl.R
 import com.tungsten.fcl.databinding.ActivityMainBinding
 import com.tungsten.fcl.game.TexturesLoader
@@ -205,11 +206,14 @@ class MainActivity : FCLActivity(), OnSelectListener, View.OnClickListener {
         binding.apply {
             uiLayout.post {
                 ThemeEngine.getInstance().registerEvent(leftMenu) {
-                    leftMenu.background = GradientDrawable().apply {
-                        setColor(ThemeEngine.getInstance().getTheme().getColor())
-                        shape = GradientDrawable.RECTANGLE
-                        ConvertUtils.dip2px(this@MainActivity, 8f).toFloat().apply {
-                            cornerRadii = floatArrayOf(0f, 0f, this, this, this, this, 0f, 0f)
+                    // [mio] 澪风格侧栏保持半透明面板底色（bg_game_menu），不整体填充主题色
+                    if (BuildConfig.FLAVOR != "mio") {
+                        leftMenu.background = GradientDrawable().apply {
+                            setColor(ThemeEngine.getInstance().getTheme().getColor())
+                            shape = GradientDrawable.RECTANGLE
+                            ConvertUtils.dip2px(this@MainActivity, 8f).toFloat().apply {
+                                cornerRadii = floatArrayOf(0f, 0f, this, this, this, this, 0f, 0f)
+                            }
                         }
                     }
                 }
@@ -1096,13 +1100,18 @@ class MainActivity : FCLActivity(), OnSelectListener, View.OnClickListener {
 
     private fun createBackground(): GradientDrawable {
         return GradientDrawable().apply {
-            setColor(Color.TRANSPARENT)
             shape = GradientDrawable.RECTANGLE
             cornerRadius = ConvertUtils.dip2px(this@MainActivity, 8f).toFloat()
-            setStroke(
-                ConvertUtils.dip2px(this@MainActivity, 1f),
-                ThemeEngine.getInstance().getTheme().getColor2()
-            )
+            if (BuildConfig.FLAVOR == "mio") {
+                // [mio] 澪风格启动块为主题色实心（配合白色启动文字）
+                setColor(ThemeEngine.getInstance().getTheme().getColor())
+            } else {
+                setColor(Color.TRANSPARENT)
+                setStroke(
+                    ConvertUtils.dip2px(this@MainActivity, 1f),
+                    ThemeEngine.getInstance().getTheme().getColor2()
+                )
+            }
         }
     }
 

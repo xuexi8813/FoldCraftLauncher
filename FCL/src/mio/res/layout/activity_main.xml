@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] 澪启动器风格主界面框架：
+     顶栏（动态岛标题移至顶部）+ 左侧澪式分类侧栏（MC 像素图标+文字）
+     + 中央内容区 + 右下角澪式启动块（账户/版本卡/启动，含下载面板）。
+     所有视图 ID 与类型和 main 源集保持一致，MainActivity 零改动驱动。 -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:transitionName="background"
+    tools:context=".activity.MainActivity">
+
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 顶栏：澪的顶部工具栏位置，动态岛标题居中 -->
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/mio_panel"
+        android:elevation="60dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.tungsten.fcllibrary.component.view.FCLDynamicIsland
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!-- 左侧澪式分类侧栏：小节标题 + 分隔线 + MC 像素图标条目 -->
+    <LinearLayout
+        android:id="@+id/left_menu"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_game_menu"
+        android:elevation="50dp"
+        android:orientation="vertical"
+        android:paddingStart="5dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar">
+
+        <com.tungsten.fcllibrary.component.view.FCLTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="2dp"
+            android:text="@string/mio_section_launcher"
+            android:textSize="10sp"
+            app:auto_text_tint="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#44716F6D" />
+
+        <com.tungsten.fcl.library.component.view.MioMenuView
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/mio_ic_grass"
+            app:mioLabel="@string/mio_menu_home"
+            app:mioPixelIcon="true" />
+
+        <com.tungsten.fcllibrary.component.view.FCLTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingStart="10dp"
+            android:paddingBottom="2dp"
+            android:text="@string/mio_section_game"
+            android:textSize="10sp"
+            app:auto_text_tint="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#44716F6D" />
+
+        <com.tungsten.fcl.library.component.view.MioMenuView
+            android:id="@+id/manage"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/mio_ic_craft_table"
+            app:mioLabel="@string/manage"
+            app:mioPixelIcon="true" />
+
+        <com.tungsten.fcl.library.component.view.MioMenuView
+            android:id="@+id/download"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/mio_ic_bookshelf"
+            app:mioLabel="@string/download"
+            app:mioPixelIcon="true" />
+
+        <com.tungsten.fcl.library.component.view.MioMenuView
+            android:id="@+id/controller"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/mio_ic_furnace"
+            app:mioLabel="@string/controller"
+            app:mioPixelIcon="true" />
+
+        <com.tungsten.fcl.library.component.view.MioMenuView
+            android:id="@+id/multiplayer"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/mio_ic_steve"
+            app:mioLabel="@string/terracotta"
+            app:mioPixelIcon="true" />
+
+        <com.tungsten.fcllibrary.component.view.FCLTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingStart="10dp"
+            android:paddingBottom="2dp"
+            android:text="@string/setting"
+            android:textSize="10sp"
+            app:auto_text_tint="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#44716F6D" />
+
+        <com.tungsten.fcl.library.component.view.MioMenuView
+            android:id="@+id/setting"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/mio_ic_command"
+            app:mioLabel="@string/setting"
+            app:mioPixelIcon="true" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.tungsten.fcl.library.component.view.MioMenuView
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+
+    </LinearLayout>
+
+    <!-- 中央内容区：澪语言下内容直接浮在场景背景上 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/ui_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/left_menu"
+        app:layout_constraintTop_toBottomOf="@id/top_bar" />
+
+    <!-- 右下角澪式启动块：账户行 + 版本卡 + 启动按钮（下载面板同域滑入） -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/right_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_container_white"
+        android:elevation="100dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.28">
+
+        <LinearLayout
+            android:id="@+id/right_menu_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+
+            <com.mio.ui.view.WaveProgressView
+                android:id="@+id/download_wave_progress"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_marginHorizontal="4dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <com.tungsten.fcllibrary.component.view.FCLImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:focusable="true"
+                    android:stateListAnimator="@xml/anim_scale_large" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.tungsten.fcllibrary.component.view.FCLTextView
+                        android:id="@+id/account_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/account_state_no_account"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:use_theme_color="true" />
+
+                    <com.tungsten.fcllibrary.component.view.FCLTextView
+                        android:id="@+id/account_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/account_state_add"
+                        android:textSize="10sp"
+                        app:use_theme_color="true" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 版本卡片：图标 + 版本名 + 组件摘要，点击进入版本选择，齿轮进入版本设置 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/version_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="6dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="5dp"
+                android:stateListAnimator="@xml/anim_scale">
+
+                <com.tungsten.fcllibrary.component.view.FCLImageView
+                    android:id="@+id/icon"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.tungsten.fcllibrary.component.view.FCLTextView
+                    android:id="@+id/version_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:singleLine="true"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/go_setting"
+                    app:layout_constraintStart_toEndOf="@id/icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:use_theme_color="true"
+                    tools:text="1.21.1-Forge" />
+
+                <com.tungsten.fcllibrary.component.view.FCLTextView
+                    android:id="@+id/version_hint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/go_setting"
+                    app:layout_constraintStart_toEndOf="@id/icon"
+                    app:layout_constraintTop_toBottomOf="@id/version_name"
+                    app:use_theme_color="true"
+                    tools:text="1.21.1, Forge:47.2.0" />
+
+                <com.tungsten.fcllibrary.component.view.FCLImageButton
+                    android:id="@+id/go_setting"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_baseline_settings_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:no_padding="true"
+                    app:use_theme_color="true" />
+
+                <com.tungsten.fcllibrary.component.view.FCLProgressBar
+                    android:id="@+id/version_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 澪式启动按钮：白字（主题色实心底由 MainActivity [mio] 钩子提供） -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:clickable="true"
+                android:elevation="10dp"
+                android:focusable="true"
+                android:paddingVertical="10dp"
+                android:stateListAnimator="@xml/anim_scale">
+
+                <com.tungsten.fcllibrary.component.view.FCLImageView
+                    android:id="@+id/icon_start"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_start"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/text_start"
+                    app:layout_constraintEnd_toStartOf="@id/text_start"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/text_start" />
+
+                <com.tungsten.fcllibrary.component.view.FCLTextView
+                    android:id="@+id/text_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:gravity="center"
+                    android:text="@string/launch"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/icon_start"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <com.mio.ui.view.DownloadSlidePanel
+            android:id="@+id/download_panel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

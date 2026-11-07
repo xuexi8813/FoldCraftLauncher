@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [mio] fcl-澪 自定义属性 -->
+<resources>
+    <declare-styleable name="MioMenuView">
+        <!-- 侧栏条目的文字标签 -->
+        <attr name="mioLabel" format="reference|string" />
+        <!-- 条目图标为 MC 像素图（不做主题 tint） -->
+        <attr name="mioPixelIcon" format="boolean" />
+    </declare-styleable>
+</resources>
