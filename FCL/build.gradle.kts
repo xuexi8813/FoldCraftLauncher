@@ -101,13 +101,28 @@ android {
             initWith(getByName("debug"))
             applicationIdSuffix = ".debug"
             signingConfig = signingConfigs.getByName("FCLDebugKey")
-            // 与 FileProvider authority（${applicationId}.provider）保持一致（原 FCLLibrary 模块的 resValue）
-            resValue("string", "file_browser_provider", "com.tungsten.fcl.debug.provider")
+            // file_browser_provider 已在下方 androidComponents.onVariants 中按各变体
+            // 的实际 applicationId 动态生成（与 FileProvider authority ${applicationId}.provider 一致）
         }
         configureEach {
             resValue("string", "app_version", defaultConfig.versionName.toString())
             resValue("string", "curse_api_key", curseApiKey.toString())
             resValue("string", "oauth_api_key", oauthApiKey.toString())
+        }
+    }
+
+    // [mio] UI 变体维度：standard = 原版 Fold Craft Launcher；mio = 澪启动器风格复刻版（fcl-澪）。
+    // 澪版所有定制都放在 FCL/src/mio/ 源集中，通过资源覆盖实现，不改动 main 源集，
+    // 便于与上游（FCL-Team/FoldCraftLauncher）同步时减少 git 冲突。
+    flavorDimensions += "ui"
+    productFlavors {
+        create("standard") {
+            dimension = "ui"
+        }
+        create("mio") {
+            dimension = "ui"
+            // fcl-澪 独立包名，可与原版共存安装
+            applicationIdSuffix = ".mio"
         }
     }
 
@@ -185,11 +200,21 @@ androidComponents {
         variant.outputs.forEach { output ->
             if (output is com.android.build.api.variant.impl.VariantOutputImpl) {
                 (output.getFilter(ABI)?.identifier ?: "all").let { abi ->
+                    // standard 变体保持原命名（FCL-release-*），其余变体带 flavor 名（FCL-mio-release-*）
+                    val flavorPart = if (variant.flavorName == "standard") "" else "${variant.flavorName}-"
                     output.outputFileName =
-                        "FCL-${variant.buildType}-${project.android.defaultConfig.versionName}-${abi}.apk"
+                        "FCL-${flavorPart}${variant.buildType}-${project.android.defaultConfig.versionName}-${abi}.apk"
                 }
             }
         }
+
+        // [mio] FileProvider authority 为 ${applicationId}.provider（manifest 占位符），
+        // 代码通过 R.string.file_browser_provider 取 authority，因此该 resValue 必须跟随
+        // 各变体（含 standard/mio × release/debug/fordebug 组合）的实际 applicationId 动态生成。
+        variant.resValues.put(
+            variant.makeResValueKey("string", "file_browser_provider"),
+            com.android.build.api.variant.ResValue("${variant.applicationId.get()}.provider")
+        )
 
         // JRE 资产不放在 src/main/assets 里（AGP 的 mergeAssets 不应用 source set 的 exclude 过滤），
         // 而是按架构注册为生成源；arch 变化会让 Sync 任务重新执行，mergeAssets 随之重跑，避免产物残留旧架构文件。
