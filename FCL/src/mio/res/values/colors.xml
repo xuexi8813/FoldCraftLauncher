@@ -20,5 +20,9 @@
     <!-- fcl-澪 专属 -->
     <color name="mio_sidebar_stroke">#DD716F6D</color>
     <color name="mio_panel">#8BFFFFFF</color>
-    <color name="mio_icon_background">#F97297</color>
+    <!-- 澪立绘图标底色（白底角色 art） -->
+    <color name="mio_icon_background">#FFFFFF</color>
+    <!-- 澪公告面板：浅粉底 + 粉描边（对应澪 themeColor3/background_info） -->
+    <color name="mio_announcement_bg">#FFDDE6</color>
+    <color name="mio_announcement_stroke">#F97297</color>
 </resources>
