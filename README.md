@@ -1,3 +1,5 @@
+> 🌸 **澪启动器风格复刻版「FCL-澪」已上架本仓库**：请参阅 [README_MIO.md](./README_MIO.md)（`fcl-mio` 分支 / mio flavor，功能与原版完全一致）。
+
 <div align="center">
     <img width="75" src="/FCL/src/main/res/drawable/img_app.png"></img>
 </div>
