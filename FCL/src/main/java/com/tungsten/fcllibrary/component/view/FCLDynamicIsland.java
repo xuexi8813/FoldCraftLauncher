@@ -52,7 +52,7 @@ public class FCLDynamicIsland extends AppCompatTextView {
                 outlinePaint.setColor(android.graphics.Color.TRANSPARENT);
                 textPaint.setColor(android.graphics.Color.WHITE);
                 textPaint.setFakeBoldText(true);
-                textPaint.setTextSize(ConvertUtils.dip2px(getContext(), 15));
+                textPaint.setTextSize(ConvertUtils.dip2px(getContext(), 18));
             }
             invalidate();
             setTextColor(ThemeEngine.getInstance().getTheme().getAutoTint());

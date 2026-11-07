@@ -6,7 +6,6 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.tungsten.fcllibrary.component.theme.ThemeEngine
-import com.tungsten.fcllibrary.util.ConvertUtils
 
 /**
  * [mio] 澪式主题色卡片：以主题色实心圆角填充自身（澪右下"开始游戏"块语言）。
@@ -22,7 +21,9 @@ class MioThemeCard @JvmOverloads constructor(
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
     }
-    private val radiusPx = ConvertUtils.dip2px(context, 8f)
+
+    // 澪的启动块为直角矩形（layout_startgame 无 corners）
+    private val radiusPx = 0f
 
     init {
         // ViewGroup 默认 willNotDraw=true，需显式开启自定义绘制
@@ -36,7 +37,7 @@ class MioThemeCard @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         canvas.drawRoundRect(
             0f, 0f, width.toFloat(), height.toFloat(),
-            radiusPx.toFloat(), radiusPx.toFloat(), paint
+            radiusPx, radiusPx, paint
         )
     }
 }

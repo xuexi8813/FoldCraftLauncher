@@ -10,21 +10,19 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/announcement_container"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.4">
+        app:layout_constraintWidth_percent="0.32">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/announcement_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="170dp"
             android:background="@drawable/mio_announcement_bg"
             android:orientation="vertical">
 
@@ -36,12 +34,13 @@
                 android:padding="10dp"
                 android:singleLine="true"
                 android:text="@string/announcement"
-                android:textColor="@color/mio_announcement_stroke" />
+                android:textColor="@color/primary_text"
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/mio_announcement_stroke" />
+                android:background="#33000000" />
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -62,7 +61,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/mio_announcement_stroke" />
+                android:background="#33000000" />
 
             <com.tungsten.fcllibrary.component.view.FCLTextView
                 android:id="@+id/date"

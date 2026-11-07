@@ -35,7 +35,8 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="12dp" />
 
     </FrameLayout>
 
@@ -223,7 +224,7 @@
                 android:focusable="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="4dp"
+                android:padding="3dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/download_wave_progress">
@@ -274,9 +275,9 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:paddingStart="6dp"
-                android:paddingTop="5dp"
+                android:paddingTop="4dp"
                 android:paddingEnd="4dp"
-                android:paddingBottom="5dp"
+                android:paddingBottom="4dp"
                 android:stateListAnimator="@xml/anim_scale"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -345,16 +346,15 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- 澪式启动按钮：白字（主题色实心底由 MainActivity [mio] 钩子提供） -->
+            <!-- 澪式启动按钮：白字（主题色实心直角底由 MainActivity [mio] 钩子提供） -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:clickable="true"
-                android:elevation="10dp"
                 android:focusable="true"
-                android:paddingVertical="10dp"
+                android:paddingVertical="6dp"
                 android:stateListAnimator="@xml/anim_scale"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -1101,11 +1101,12 @@ class MainActivity : FCLActivity(), OnSelectListener, View.OnClickListener {
     private fun createBackground(): GradientDrawable {
         return GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
-            cornerRadius = ConvertUtils.dip2px(this@MainActivity, 8f).toFloat()
             if (BuildConfig.FLAVOR == "mio") {
-                // [mio] 澪风格启动块为主题色实心（配合白色启动文字）
+                // [mio] 澪风格启动块为主题色实心直角（配合白色启动文字）
+                cornerRadius = 0f
                 setColor(ThemeEngine.getInstance().getTheme().getColor())
             } else {
+                cornerRadius = ConvertUtils.dip2px(this@MainActivity, 8f).toFloat()
                 setColor(Color.TRANSPARENT)
                 setStroke(
                     ConvertUtils.dip2px(this@MainActivity, 1f),

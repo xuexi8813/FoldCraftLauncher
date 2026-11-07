@@ -60,9 +60,9 @@ public class MioMenuView extends FCLMenuView {
         if (label == null) label = "";
         setPadding(
                 ConvertUtils.dip2px(getContext(), 12f),
-                ConvertUtils.dip2px(getContext(), 6f),
+                ConvertUtils.dip2px(getContext(), 4f),
                 ConvertUtils.dip2px(getContext(), 8f),
-                ConvertUtils.dip2px(getContext(), 6f)
+                ConvertUtils.dip2px(getContext(), 4f)
         );
         setScaleType(ScaleType.FIT_XY);
         textPaint.setTextSize(ConvertUtils.dip2px(getContext(), 15f));
